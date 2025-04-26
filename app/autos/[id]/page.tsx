@@ -1,4 +1,10 @@
-export default function FahrzeugDetail({ params }: { params: { id: string } }) {
+import { notFound } from 'next/navigation';
+
+interface Props {
+  params: { id: string };
+}
+
+export default async function FahrzeugDetail({ params }: Props) {
   const { id } = params;
 
   const autos = [
@@ -32,7 +38,7 @@ export default function FahrzeugDetail({ params }: { params: { id: string } }) {
   const auto = autos.find((a) => a.id === id);
 
   if (!auto) {
-    return <div>Fahrzeug nicht gefunden</div>;
+    notFound();
   }
 
   return (

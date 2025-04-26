@@ -1,4 +1,11 @@
-import Link from 'next/link';
+type Props = {
+  params: {
+    id: string;
+  }
+}
+
+export default function FahrzeugDetail({ params }: Props) {
+  const { id } = params;import Link from 'next/link';
 
 export default function Home() {
   return (

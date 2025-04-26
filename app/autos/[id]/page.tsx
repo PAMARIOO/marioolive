@@ -1,37 +1,45 @@
-import { notFound } from 'next/navigation';
+interface FahrzeugDetailPageProps {
+  params: {
+    id: string;
+  };
+}
 
-const autos = [
-  {
-    id: '123',
-    marke: 'BMW',
-    modell: '320i Touring',
-    preis: 18500,
-    währung: 'CHF',
-    erstzulassung: '2019-03',
-    kilometer: 75500,
-    treibstoff: 'Benzin',
-    getriebe: 'Automat',
-    leistung_ps: 184,
-    farbe: 'Blau',
-    türen: 5,
-    sitze: 5,
-    beschreibung: 'Scheckheftgepflegt, 1. Hand, Winterreifen inkl.',
-    bilder: [],
-    plz: '8004',
-    ort: 'Zürich',
-    anbieter: {
-      typ: 'Händler',
-      name: 'Auto Mario GmbH',
-      telefon: '+41 79 123 45 67',
-      email: 'info@marioo.ch'
+export default function FahrzeugDetail({ params }: FahrzeugDetailPageProps) {
+  const { id } = params;
+
+  const autos = [
+    {
+      id: '123',
+      marke: 'BMW',
+      modell: '320i Touring',
+      preis: 18500,
+      währung: 'CHF',
+      erstzulassung: '2019-03',
+      kilometer: 75500,
+      treibstoff: 'Benzin',
+      getriebe: 'Automat',
+      leistung_ps: 184,
+      farbe: 'Blau',
+      türen: 5,
+      sitze: 5,
+      beschreibung: 'Scheckheftgepflegt, 1. Hand, Winterreifen inkl.',
+      bilder: [],
+      plz: '8004',
+      ort: 'Zürich',
+      anbieter: {
+        typ: 'Händler',
+        name: 'Auto Mario GmbH',
+        telefon: '+41 79 123 45 67',
+        email: 'info@marioo.ch'
+      }
     }
+  ];
+
+  const auto = autos.find((a) => a.id === id);
+
+  if (!auto) {
+    return <div>Fahrzeug nicht gefunden</div>;
   }
-];
-
-export default function FahrzeugDetail({ params }: { params: { id: string } }) {
-  const auto = autos.find(a => a.id === params.id);
-
-  if (!auto) return notFound();
 
   return (
     <main style={{ padding: 40 }}>

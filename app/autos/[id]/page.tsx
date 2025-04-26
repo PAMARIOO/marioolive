@@ -1,10 +1,4 @@
-interface FahrzeugDetailProps {
-  params: {
-    id: string;
-  };
-}
-
-export default async function FahrzeugDetail({ params }: FahrzeugDetailProps) {
+export default function FahrzeugDetail({ params }: { params: { id: string } }) {
   const { id } = params;
 
   const autos = [

@@ -1,6 +1,10 @@
-import { PageProps } from 'next';
+interface FahrzeugDetailPageProps {
+  params: {
+    id: string;
+  };
+}
 
-export default function FahrzeugDetail({ params }: PageProps<{ id: string }>) {
+export default async function FahrzeugDetail({ params }: FahrzeugDetailPageProps) {
   const { id } = params;
 
   const autos = [

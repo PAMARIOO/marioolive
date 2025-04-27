@@ -1,19 +1,14 @@
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
 
-interface Props {
-  params: { id: string };
-}
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return {
-    title: `Fahrzeug ${params.id} | marioo.ch`,
-  };
-}
-
-export default function FahrzeugDetail({ params }: Props) {
+export default async function FahrzeugDetail({ params }: Props) {
   const { id } = params;
 
   const autos = [

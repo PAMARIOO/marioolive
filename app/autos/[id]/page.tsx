@@ -39,9 +39,12 @@ export default async function FahrzeugDetail({ params }: { params: Promise<Param
 
   const auto = autos.find((a) => a.id === id);
 
-  if (!auto) {
-    notFound();
-  }
+if (!auto) {
+  // Schutz gegen Serverfehler
+  console.error(`Fahrzeug mit ID ${id} nicht gefunden.`);
+  notFound();
+  return null;
+}
 
   return (
     <main style={{ padding: 40 }}>

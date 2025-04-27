@@ -1,4 +1,5 @@
-import { notFound } from 'next/navigation';
+
+import type { PageProps } from '../../../../../.next/types/app/autos/[id]/page';
 
 export const dynamic = 'force-dynamic';
 

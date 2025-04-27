@@ -1,9 +1,14 @@
 import { notFound } from 'next/navigation';
-import { PageProps } from 'next'; // <-- GANZ WICHTIG!
 
 export const dynamic = 'force-dynamic';
 
-export default async function FahrzeugDetail({ params }: PageProps<{ id: string }>) {
+interface FahrzeugPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function FahrzeugDetail({ params }: FahrzeugPageProps) {
   const { id } = params;
 
   const autos = [

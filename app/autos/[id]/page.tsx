@@ -1,16 +1,14 @@
-// app/autos/[id]/page.tsx
-
 import { notFound } from 'next/navigation';
 
-type PageProps = {
+interface PageProps {
   params: {
     id: string;
   };
-};
+}
 
 export const dynamic = 'force-dynamic';
 
-export default async function FahrzeugDetail({ params }: PageProps) {
+export default function FahrzeugDetail({ params }: PageProps) {
   const { id } = params;
 
   const autos = [
@@ -75,3 +73,4 @@ export default async function FahrzeugDetail({ params }: PageProps) {
     </main>
   );
 }
+

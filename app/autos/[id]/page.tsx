@@ -2,12 +2,12 @@ import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-type Params = {
+interface Params {
   id: string;
-};
+}
 
-export default async function FahrzeugDetail({ params }: { params: Params }) {
-  const { id } = params;
+export default async function FahrzeugDetail({ params }: { params: Promise<Params> }) {
+  const { id } = await params;
 
   const autos = [
     {
@@ -71,5 +71,4 @@ export default async function FahrzeugDetail({ params }: { params: Params }) {
     </main>
   );
 }
-
 

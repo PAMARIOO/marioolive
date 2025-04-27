@@ -1,14 +1,14 @@
 import { notFound } from 'next/navigation';
 
-type Props = {
+interface PageProps {
   params: {
     id: string;
   };
-};
+}
 
 export const dynamic = 'force-dynamic';
 
-export default async function FahrzeugDetail({ params }: Props) {
+export default async function FahrzeugDetail({ params }: { params: { id: string } }) {
   const { id } = params;
 
   const autos = [

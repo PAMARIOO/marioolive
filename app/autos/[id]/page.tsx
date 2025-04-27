@@ -2,13 +2,11 @@ import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-interface FahrzeugPageProps {
-  params: {
-    id: string;
-  };
-}
+type Params = {
+  id: string;
+};
 
-export default async function FahrzeugDetail({ params }: FahrzeugPageProps) {
+export default async function FahrzeugDetail({ params }: { params: Params }) {
   const { id } = params;
 
   const autos = [
@@ -73,4 +71,5 @@ export default async function FahrzeugDetail({ params }: FahrzeugPageProps) {
     </main>
   );
 }
+
 

@@ -1,14 +1,15 @@
 import { notFound } from 'next/navigation';
 
-// Typ für die Props definieren
-interface Props {
-  params: { id: string }
-}
-
 export const dynamic = 'force-dynamic';
 
+interface Props {
+  params: {
+    id: string;
+  };
+}
+
 export default async function FahrzeugDetail({ params }: Props) {
-  const { id } = params;
+  const { id } = await Promise.resolve(params); // <-- DAS löst das Promise-Problem
 
   const autos = [
     {
@@ -72,3 +73,4 @@ export default async function FahrzeugDetail({ params }: Props) {
     </main>
   );
 }
+

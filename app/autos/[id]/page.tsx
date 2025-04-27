@@ -1,15 +1,10 @@
 import { notFound } from 'next/navigation';
+import { PageProps } from 'next'; // <-- GANZ WICHTIG!
 
 export const dynamic = 'force-dynamic';
 
-interface Props {
-  params: {
-    id: string;
-  };
-}
-
-export default async function FahrzeugDetail({ params }: Props) {
-  const { id } = await Promise.resolve(params); // <-- DAS löst das Promise-Problem
+export default async function FahrzeugDetail({ params }: PageProps<{ id: string }>) {
+  const { id } = params;
 
   const autos = [
     {

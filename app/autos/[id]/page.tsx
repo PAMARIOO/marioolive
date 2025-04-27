@@ -73,3 +73,4 @@ export default async function FahrzeugDetail({ params }: PageProps) {
 }
 
 export const dynamic = 'force-dynamic';
+

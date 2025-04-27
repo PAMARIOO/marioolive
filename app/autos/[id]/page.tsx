@@ -2,11 +2,11 @@ import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-interface Params {
+type Params = {
   id: string;
-}
+};
 
-export default async function FahrzeugDetail({ params }: { params: Params }) {
+export default async function FahrzeugDetail({ params }: { params: Awaited<Params> }) {
   const { id } = params;
 
   const autos = [
@@ -40,9 +40,7 @@ export default async function FahrzeugDetail({ params }: { params: Params }) {
   const auto = autos.find((a) => a.id === id);
 
   if (!auto) {
-    console.error(`Kein Fahrzeug gefunden mit ID: ${id}`);
     notFound();
-    return null;
   }
 
   return (
@@ -73,4 +71,5 @@ export default async function FahrzeugDetail({ params }: { params: Params }) {
     </main>
   );
 }
+
 

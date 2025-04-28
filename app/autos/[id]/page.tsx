@@ -1,4 +1,9 @@
-export default async function FahrzeugDetail({ params }: any) {
+// app/autos/[id]/page.tsx
+import { notFound } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
+
+export default function FahrzeugDetail({ params }: any) {
   const { id } = params;
 
   const autos = [
@@ -33,7 +38,7 @@ export default async function FahrzeugDetail({ params }: any) {
 
   if (!auto) {
     notFound();
-    return null; // GANZ WICHTIG: Seite korrekt abschließen bei "nicht gefunden"
+    return null;
   }
 
   return (
@@ -64,4 +69,3 @@ export default async function FahrzeugDetail({ params }: any) {
     </main>
   );
 }
-

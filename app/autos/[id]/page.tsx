@@ -1,13 +1,15 @@
+// app/autos/[id]/page.tsx
+import { notFound } from 'next/navigation';
 
-import type { PageProps } from '../../../../../.next/types/app/autos/[id]/page';
+type FahrzeugPageProps = {
+  params: {
+    id: string;
+  };
+};
 
 export const dynamic = 'force-dynamic';
 
-type Params = {
-  id: string;
-};
-
-export default async function FahrzeugDetail({ params }: { params: Awaited<Params> }) {
+export default function FahrzeugDetail({ params }: FahrzeugPageProps) {
   const { id } = params;
 
   const autos = [
@@ -46,23 +48,23 @@ export default async function FahrzeugDetail({ params }: { params: Awaited<Param
 
   return (
     <main style={{ padding: 40 }}>
-      <h1>{auto?.marke} {auto?.modell}</h1>
-      <p><strong>Preis:</strong> {auto?.preis} {auto?.währung}</p>
-      <p><strong>Erstzulassung:</strong> {auto?.erstzulassung}</p>
-      <p><strong>Kilometer:</strong> {auto?.kilometer.toLocaleString()} km</p>
-      <p><strong>Treibstoff:</strong> {auto?.treibstoff}</p>
-      <p><strong>Getriebe:</strong> {auto?.getriebe}</p>
-      <p><strong>Leistung:</strong> {auto?.leistung_ps} PS</p>
-      <p><strong>Farbe:</strong> {auto?.farbe}</p>
-      <p><strong>Türen/Sitze:</strong> {auto?.türen} / {auto?.sitze}</p>
-      <p><strong>PLZ/Ort:</strong> {auto?.plz} {auto?.ort}</p>
-      <p><strong>Beschreibung:</strong> {auto?.beschreibung}</p>
+      <h1>{auto.marke} {auto.modell}</h1>
+      <p><strong>Preis:</strong> {auto.preis} {auto.währung}</p>
+      <p><strong>Erstzulassung:</strong> {auto.erstzulassung}</p>
+      <p><strong>Kilometer:</strong> {auto.kilometer.toLocaleString()} km</p>
+      <p><strong>Treibstoff:</strong> {auto.treibstoff}</p>
+      <p><strong>Getriebe:</strong> {auto.getriebe}</p>
+      <p><strong>Leistung:</strong> {auto.leistung_ps} PS</p>
+      <p><strong>Farbe:</strong> {auto.farbe}</p>
+      <p><strong>Türen/Sitze:</strong> {auto.türen} / {auto.sitze}</p>
+      <p><strong>PLZ/Ort:</strong> {auto.plz} {auto.ort}</p>
+      <p><strong>Beschreibung:</strong> {auto.beschreibung}</p>
 
       <h2>Anbieter</h2>
-      <p><strong>Typ:</strong> {auto?.anbieter.typ}</p>
-      <p><strong>Name:</strong> {auto?.anbieter.name}</p>
-      <p><strong>Telefon:</strong> {auto?.anbieter.telefon}</p>
-      <p><strong>Email:</strong> {auto?.anbieter.email}</p>
+      <p><strong>Typ:</strong> {auto.anbieter.typ}</p>
+      <p><strong>Name:</strong> {auto.anbieter.name}</p>
+      <p><strong>Telefon:</strong> {auto.anbieter.telefon}</p>
+      <p><strong>Email:</strong> {auto.anbieter.email}</p>
 
       <div style={{ marginTop: 20 }}>
         <button onClick={() => window.history.back()} style={{ padding: '10px 20px' }}>
@@ -72,5 +74,3 @@ export default async function FahrzeugDetail({ params }: { params: Awaited<Param
     </main>
   );
 }
-
-

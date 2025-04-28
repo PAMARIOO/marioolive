@@ -36,8 +36,8 @@ export default async function FahrzeugDetail({ params }: { params: { id: string 
   const auto = autos.find((a) => a.id === id);
 
   if (!auto) {
-    notFound(); // Das schickt eine korrekte 404-Seite!
-    return null;
+    notFound();
+    return null; // GANZ WICHTIG: Seite korrekt abschließen bei "nicht gefunden"
   }
 
   return (
@@ -68,3 +68,4 @@ export default async function FahrzeugDetail({ params }: { params: { id: string 
     </main>
   );
 }
+

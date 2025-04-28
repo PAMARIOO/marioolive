@@ -1,9 +1,8 @@
-// app/autos/[id]/page.tsx
 import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-export default async function FahrzeugDetail({ params }: any) {
+export default async function FahrzeugDetail({ params }: { params: { id: string } }) {
   const { id } = params;
 
   const autos = [
@@ -37,7 +36,8 @@ export default async function FahrzeugDetail({ params }: any) {
   const auto = autos.find((a) => a.id === id);
 
   if (!auto) {
-    notFound();
+    notFound(); // Das schickt eine korrekte 404-Seite!
+    return null;
   }
 
   return (

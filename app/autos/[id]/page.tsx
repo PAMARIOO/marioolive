@@ -69,3 +69,4 @@ export default async function FahrzeugDetail({ params }: { params: { id: string 
   );
 }
 
+

@@ -62,6 +62,7 @@ export default function FahrzeugDetail({ params }: { params: { id: string } }) {
 
   if (!auto) {
     notFound();
+    return null;
   }
 
   return (
